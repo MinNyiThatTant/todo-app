@@ -6,24 +6,48 @@ export const useAuthStore = defineStore('auth', {
         user: JSON.parse(localStorage.getItem('user')) || null,
         token: localStorage.getItem('token') || null
     }),
+    
+    getters: {
+        isAuthenticated: (state) => !!state.token,
+        isAdmin: (state) => state.user?.role === 'admin'
+    },
+    
     actions: {
         async login(email, password) {
-            const res = await api.post('/auth/login', { email, password })
-            this.user = res.data.user
-            this.token = res.data.token
-            localStorage.setItem('user', JSON.stringify(this.user))
-            localStorage.setItem('token', this.token)
-            return res.data
+            try {
+                const response = await api.post('/auth/login', { email, password })
+                const { token, user } = response.data
+                
+                this.token = token
+                this.user = user
+                
+                localStorage.setItem('token', token)
+                localStorage.setItem('user', JSON.stringify(user))
+                
+                // Set default axios header
+                api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+                
+                return response.data
+            } catch (error) {
+                throw error
+            }
         },
+        
         async register(name, email, password) {
-            const res = await api.post('/auth/register', { name, email, password })
-            return res.data
+            try {
+                const response = await api.post('/auth/register', { name, email, password })
+                return response.data
+            } catch (error) {
+                throw error
+            }
         },
+        
         logout() {
             this.user = null
             this.token = null
-            localStorage.removeItem('user')
             localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            delete api.defaults.headers.common['Authorization']
         }
     }
 })

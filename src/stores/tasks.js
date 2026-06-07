@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import api from '../services/api';
+import { defineStore } from 'pinia'
+import api from '../services/api'
 
 export const useTaskStore = defineStore('tasks', {
     state: () => ({
@@ -10,56 +10,50 @@ export const useTaskStore = defineStore('tasks', {
     
     actions: {
         async fetchTasks() {
-            this.loading = true;
+            this.loading = true
+            this.error = null
             try {
-                const response = await api.get('/tasks');  // ← /tasks ဖြစ်ရမယ် (baseURL က /api ပါပြီ)
-                this.tasks = response.data;
-                this.error = null;
-                console.log('Tasks fetched:', this.tasks.length);
-            } catch (err) {
-                this.error = err.response?.data?.message || 'Failed to fetch tasks';
-                console.error('Fetch tasks error:', err);
+                const response = await api.get('/tasks')
+                this.tasks = response.data
+                return response.data
+            } catch (error) {
+                this.error = error.response?.data?.message || 'Failed to fetch tasks'
+                throw error
             } finally {
-                this.loading = false;
+                this.loading = false
             }
         },
         
         async createTask(taskData) {
             try {
-                const response = await api.post('/tasks', taskData);
-                this.tasks.unshift(response.data);
-                console.log('Task created:', response.data);
-                return response.data;
-            } catch (err) {
-                console.error('Create task error:', err);
-                throw err;
+                const response = await api.post('/tasks', taskData)
+                this.tasks.unshift(response.data)
+                return response.data
+            } catch (error) {
+                throw error
             }
         },
         
         async updateTask(id, taskData) {
             try {
-                const response = await api.put(`/tasks/${id}`, taskData);
-                const index = this.tasks.findIndex(t => t.id === id);
+                const response = await api.put(`/tasks/${id}`, taskData)
+                const index = this.tasks.findIndex(t => t.id === id)
                 if (index !== -1) {
-                    this.tasks[index] = response.data;
+                    this.tasks[index] = response.data
                 }
-                console.log('Task updated:', response.data);
-                return response.data;
-            } catch (err) {
-                console.error('Update task error:', err);
-                throw err;
+                return response.data
+            } catch (error) {
+                throw error
             }
         },
         
         async deleteTask(id) {
             try {
-                await api.delete(`/tasks/${id}`);
-                this.tasks = this.tasks.filter(t => t.id !== id);
-                console.log('Task deleted:', id);
-            } catch (err) {
-                console.error('Delete task error:', err);
-                throw err;
+                await api.delete(`/tasks/${id}`)
+                this.tasks = this.tasks.filter(t => t.id !== id)
+            } catch (error) {
+                throw error
             }
         }
     }
-});
+})
