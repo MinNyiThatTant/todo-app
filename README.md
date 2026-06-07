@@ -148,40 +148,12 @@ cd todo-app
 
 ### Step 2: Setup Database
 ```bash
-1. Open XAMPP Control Panel
-2. Click "Start" button for Apache
-3. Click "Start" button for MySQL
-4. Make sure both show green color
+Open XAMPP Control Panel, start apache and mysql
 ```
 
-### install dependencies
+### install dependencies and run command (backend, electron)
 ```bash
 npm install
 npm run dev
 npm run electron:dev
 ```
-
-
-## Usage Guide
-
-### First Time Setup
-
-#### Step 1: Launch the Application
-
-| Action | Instruction |
-|--------|-------------|
-| Method 1 | Double-click the desktop shortcut **"Todo App"** |
-| Method 2 | Find **"Todo App"** in the Start Menu and click to open |
-
----
-
-#### Step 2: Create a New Account (Register)
-
-| # | Action | Instruction |
-|---|--------|-------------|
-| 1 | Navigate | On the Login page, click **"Register here"** link |
-| 2 | Fill Name | Enter your full name (e.g., John Doe) |
-| 3 | Fill Email | Enter your email address (e.g., minnyi@example.com) |
-| 4 | Fill Password | Enter a password (minimum 6 characters) |
-| 5 | Submit | Click the **"Register"** button |
-| 6 | Confirm | You will see success message: **"Registration successful! Please login."** |
