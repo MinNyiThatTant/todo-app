@@ -142,7 +142,7 @@ Admin သုံးစွဲသူများသည် User Management, All Task
 ### Step 1: Clone Repository
 
 ```bash
-git clone https://github.com/yourusername/todo-app.git
+git clone https://github.com/MinNyiThatTant/todo-app.git
 cd todo-app
 ```
 
