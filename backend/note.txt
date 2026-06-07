@@ -1,0 +1,93 @@
+Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
+Remove-Item -Force package-lock.json -ErrorAction SilentlyContinue
+
+npm cache clean --force
+
+# 1. Use different registry
+npm config set registry https://registry.npmmirror.com
+
+# OR (official but sometimes slower)
+npm config set registry https://registry.npmjs.org/
+
+# 2. Increase timeout
+npm config set fetch-retry-mintimeout 20000
+npm config set fetch-retry-maxtimeout 120000
+
+# 3. Disable strict SSL (temporary - if behind proxy)
+npm config set strict-ssl false
+
+# Run PowerShell as Administrator
+npm install --global windows-build-tools
+# OR
+npm install --global node-gyp
+
+# Install electron separately first
+npm install electron@26.2.0 --no-optional --save-exact
+
+# Then install others
+npm install
+
+# Install yarn globally
+npm install -g yarn
+
+# Clean install with yarn
+yarn install
+
+# Set proxy (your actual proxy)
+npm config set proxy http://proxy.company.com:8080
+npm config set https-proxy http://proxy.company.com:8080
+
+# After install, remove if not needed
+npm config delete proxy
+npm config delete https-proxy
+
+# to reinstall
+npm install --no-optional
+
+cd backend
+npm install
+cd ..
+
+cd frontend
+npm install --legacy-peer-deps
+
+
+
+
+# 1. Clean previous build
+# Option 1: Remove folder (PowerShell way)
+Remove-Item -Path dist -Recurse -Force -ErrorAction SilentlyContinue
+
+# Option 2: Short version
+rm -r -fo dist
+
+# Option 3: If folder exists, delete it
+if (Test-Path dist) { Remove-Item -Recurse -Force dist }
+
+# Option 4: Delete both dist and release
+Remove-Item -Path dist, release -Recurse -Force -ErrorAction SilentlyContinue
+
+# 2. Build again
+npm run electron:build
+
+# ✓ built in 2.5s
+#   • electron-builder  version=24.6.4
+#   • building target=NSIS
+#   • building block map
+#   • publishing finished
+
+
+taskkill /F /IM electron.exe 2>$null
+taskkill /F /IM node.exe 2>$null
+
+Remove-Item -Path dist -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path release -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path .vite -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path node_modules\.cache -Recurse -Force -ErrorAction SilentlyContinue
+
+Remove-Item -Path node_modules/.vite -Recurse -Force -ErrorAction SilentlyContinue
+
+npm cache clean --force
+
+Remove-Item -Path "$env:APPDATA\Todo App" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "$env:LOCALAPPDATA\Todo App" -Recurse -Force -ErrorAction SilentlyContinue
