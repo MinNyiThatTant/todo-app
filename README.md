@@ -13,6 +13,13 @@
 
 ---
 
+### Dashboard
+![Dashboard](screenshots/dashboard.PNG)
+
+### Action
+![Action](screenshots/action.PNG)
+---
+
 ## Overview
 
 Todo Desktop Application (TDA) သည် သုံးစွဲသူများအတွက် Task Management ကို အဆင်ပြေချောမွေ့စေရန် Desktop Application အနေဖြင့် တည်ဆောက်ထားသော စနစ်ဖြစ်ပါတယ်။
