@@ -42,9 +42,9 @@ Admin သုံးစွဲသူများသည် User Management, All Task
 | Priority Levels | High, Medium, Low priority | ✅ Complete |
 | Due Dates | Set and track task deadlines | ✅ Complete |
 | Search & Filter | Find tasks by title, priority, status | ✅ Complete |
-| Reports | Statistics and analytics dashboard | ✅ Complete |
-| Dark Mode | Toggle between light/dark themes | ✅ Complete |
-| Admin Panel | User management and system overview | ✅ Complete |
+| Reports | Statistics and analytics dashboard | ⏳ Pending |
+| Dark Mode | Toggle between light/dark themes | ⏳ Pending |
+| Admin/User Panel | User management and system overview | ✅ Complete |
 
 ### User Roles
 
