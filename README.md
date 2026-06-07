@@ -1,6 +1,6 @@
-# Todo Desktop Application
+# Todo Application
 
-> A Complete Desktop Task Management System Built with Electron, Vue.js, Node.js, Express, and MySQL
+> ToDo Management System Built with Electron, Vue.js, Node.js, Express, and MySQL
 
 <div align="center">
 
