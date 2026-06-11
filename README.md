@@ -22,7 +22,7 @@
 
 ## Overview
 
-Todo Desktop Application (TDA) သည် သုံးစွဲသူများအတွက် Task Management ကို အဆင်ပြေချောမွေ့စေရန် Desktop Application အနေဖြင့် တည်ဆောက်ထားသော စနစ်ဖြစ်ပါတယ်။
+Todo Desktop Application (TDA) သည် သုံးစွဲသူများအတွက် Task Management ကို လွယ်ကူစွာလုပ်ဆောင်နိုင်စေရန် Desktop Application အနေဖြင့် တည်ဆောက်ထားတဲ့စနစ်ဖြစ်ပါတယ်။
 
 သုံးစွဲသူများသည် User Registration ပြုလုပ်ပြီး Login ဝင်ရောက်ကာ မိမိတို့၏ Tasks များကို Create, Read, Update, Delete (CRUD) ပြုလုပ်နိုင်ပါတယ်။
 
